@@ -25,26 +25,22 @@ st.markdown("""
         color: white;
     }
 
-    /* SIDEBAR BACKGROUND - FORCE DARK */
+    /* SIDEBAR BACKGROUND - FORCE DARK with !important */
     [data-testid="stSidebar"] {
-        background-color: #0f2027; /* Dark Blue/Black */
-        border-right: 1px solid rgba(255,255,255,0.1);
+        background-color: #0f2027 !important; 
+        border-right: 1px solid rgba(255,255,255,0.1) !important;
     }
 
     /* SIDEBAR TEXT FIX */
-    [data-testid="stSidebar"] h1, 
-    [data-testid="stSidebar"] h2, 
-    [data-testid="stSidebar"] h3, 
-    [data-testid="stSidebar"] span, 
-    [data-testid="stSidebar"] p {
+    [data-testid="stSidebar"] * {
         color: #e0e0e0 !important;
     }
 
-    /* INFO BOX STYLING (The blue box was hard to read) */
+    /* INFO BOX STYLING */
     .stAlert {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.1) !important;
         color: white !important;
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.2) !important;
     }
 
     /* HERO CARD */
