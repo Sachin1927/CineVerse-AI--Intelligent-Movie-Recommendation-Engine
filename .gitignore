@@ -1,0 +1,30 @@
+# --- Python Internals ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+venv/
+env/
+.env
+.venv/
+
+# --- IDE Settings (VS Code, Pycharm) ---
+.vscode/
+.idea/
+
+# --- Data ---
+# We ignore CSVs because we are using the optimized Parquet file now.
+# This prevents the large raw files from cluttering the repo.
+*.csv
+# Keep the parquet file!
+!data/movies.parquet
+
+# --- Models ---
+# Usually, we ignore models, but for this assignment, 
+# we WANT to upload them so the recruiter can run it immediately.
+# *.pkl (Commented out so your models get uploaded)
+
+# --- OS Junk ---
+.DS_Store
+Thumbs.db
