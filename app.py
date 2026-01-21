@@ -108,13 +108,17 @@ movies, similarity = load_models()
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
+    
+    # We now fetch the SCORE as well (x[1])
     movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
     
     recommendations = []
     for i in movies_list:
-        recommendations.append(movies.iloc[i[0]])
+        movie_data = movies.iloc[i[0]].to_dict()
+        # Add the similarity score to the data
+        movie_data['score'] = i[1] 
+        recommendations.append(movie_data)
     return recommendations
-
 # --- UI STRUCTURE ---
 
 # 1. Header Area
@@ -182,21 +186,28 @@ if 'search_clicked' in st.session_state and st.session_state['search_clicked']:
     for idx, col in enumerate(cols):
         movie = recs[idx]
         
-        # Create a Google Search URL for the movie
+        # Calculate percentage match
+        match_score = int(movie['score'] * 100)
+        
         search_url = f"https://www.google.com/search?q={movie['title'].replace(' ', '+')}+movie"
         
         with col:
-            # We use HTML to make the image clickable
-            # The <a> tag wraps the <img> tag
             st.markdown(f"""
                 <a href="{search_url}" target="_blank">
                     <img src="{movie['poster_path']}" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); transition: transform 0.3s;">
                 </a>
             """, unsafe_allow_html=True)
             
-            # Movie Title & Rating below
-            st.markdown(f"**[{movie['title']}]({search_url})**") # Make title clickable too
-            st.caption(f"⭐ {movie['rating']}")
+            # TITLE
+            st.markdown(f"**[{movie['title']}]({search_url})**")
+            
+            # METRICS DISPLAY (The new part)
+            if match_score > 70:
+                color = "#4CAF50" # Green
+            else:
+                color = "#FFC107" # Yellow
+                
+            st.caption(f"⭐ {movie['rating']} | <span style='color:{color}'><b>{match_score}% Match</b></span>", unsafe_allow_html=True)
 # --- FOOTER ---
 st.markdown("---")
 st.markdown(
