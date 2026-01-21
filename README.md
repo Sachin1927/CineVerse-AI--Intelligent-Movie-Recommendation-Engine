@@ -24,7 +24,18 @@
 **CineVerse AI** is a content-based recommendation system designed to solve the "cold start" problem in media consumption. Unlike collaborative filtering, which requires user history, this engine analyzes the intrinsic properties of movies (plot summaries, genres, cast, and directors) to suggest personalized content immediately.
 
 The system processes metadata from the **IMDb Top 1000 Dataset**, creates a vectorized representation of each film, and utilizes **Cosine Similarity** to calculate the mathematical distance between movies, serving the top 5 closest matches in real-time.
-
+<h2>🚀 Live Demo</h2>
+<div align="center">
+  <p>Experience the CineVerse recommendation engine live:</p>
+  
+  <a href="https://cineverse-ai-intelligent-movie.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/View_Live_App-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo" />
+  </a>
+  
+  <br />
+  
+  <p><i>⚠️ Note: The app is hosted on a free Render instance. If it has been inactive, it may take 30-40 seconds to "wake up" on the first load.</i></p>
+</div>
 ---
 
 ## ✨ Key Features
