@@ -36,7 +36,7 @@ The system processes metadata from the **IMDb Top 1000 Dataset**, creates a vect
   
   <p><i>⚠️ Note: The app is hosted on a free Render instance. If it has been inactive, it may take 30-40 seconds to "wake up" on the first load.</i></p>
 </div>
----
+
 
 ## ✨ Key Features
 * **🧠 Content-Based Filtering:** Suggests movies based on plot keywords, genre, director, and actors.
@@ -71,6 +71,7 @@ pip install -r requirements.txt
 
 ### 3. Build the Models
 This script processes the raw data and generates the similarity matrix (similarity.pkl).
+
 python src/data_processor.py
 
 ### 4. Run the App
